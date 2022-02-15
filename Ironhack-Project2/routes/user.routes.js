@@ -42,4 +42,7 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'),(req,res,next)
     .catch(err=>console.log(err))
 })
 
+
+
+PRUEBAAAAAAAAAAAAAAAAAAAA
 module.exports = router
