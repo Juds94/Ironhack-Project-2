@@ -1,1 +1,17 @@
 <h1> Bienvenido a tu perfil {{user.username}}</h1>
+
+
+<a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
+
+{{#if isOwner}}
+<h2>Aqui está la información de tu perrete</h2>
+
+{{#each dogs}}
+<li>Nombre:{{name}}</li>
+<li>Años:{{age}}</li>
+<li>Descripción:{{description}}</li>
+<a href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos de tu perrete!</a>
+{{/each}}
+
+
+{{/if}}

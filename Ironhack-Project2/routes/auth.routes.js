@@ -8,18 +8,18 @@ const saltRounds = 10
 //  SignUp Care
 
 
-// router.get('/register', (req, res, next) => res.render('auth/select-profile'))
-// router.get('/register/:role', (req, res, next) => {
+router.get('/register', (req, res, next) => res.render('auth/select-profile'))
+router.get('/register/:role', (req, res, next) => {
 
-//     const { role } = req.params
+    const { role } = req.params
 
-//     if (role === 'owner') {
-//         res.render('auth/signup-owner', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
-//     } else if (role === 'care') {
-//         res.render('auth/signup-care', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
-//     }
+    if (role === 'owner') {
+        res.render('auth/signup-owner', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
+    } else if (role === 'care') {
+        res.render('auth/signup-care', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
+    }
 
-// })
+})
 
 
 router.post('/register/:role', (req, res, next) => {

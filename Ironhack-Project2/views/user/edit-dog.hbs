@@ -1,0 +1,23 @@
+<h1> Edita aquí los datos de tu perrete</h1>
+
+<form action="/profile/{{user._id}}/edit/dog/{{dog._id}}" method="POST" style="display: inline-block;">
+
+    <label>
+        Name
+        <input type="text" name="name" value="{{dog.name}}">
+    </label>
+
+    <label>
+        Age
+        <input type="number" name="age" value="{{dog.age}}">
+    </label>
+
+    <label>
+        Description
+        <input type="text" name="description" value={{dog.description}}>
+    </label>
+
+    <input type="submit" value="Editar datos de mi perrete">
+
+
+</form>
