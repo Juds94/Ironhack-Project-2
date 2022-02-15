@@ -14,7 +14,7 @@ const express = require("express");
 const hbs = require("hbs");
 
 const app = express();
-
+//const dogApi= new dogApiFact();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 require("./config/session.config")(app)
@@ -22,16 +22,20 @@ require("./config/session.config")(app)
 // default value for title local
 
 
-
-app.locals.appTitle = `4Legs`
+app.locals.appTitle = `4Legs`;
+// app.get('/', (req,res)=>{
+//     dogApi.getFact().then(fact=>{
+//         res.render('/')
+//     })
+// });
 
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);
 const authRoutes = require("./routes/auth.routes")
-app.use("/", authRoutes)
+app.use("/", authRoutes);
 const userRoutes = require("./routes/user.routes")
-app.use("/",userRoutes)
+app.use("/",userRoutes);
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

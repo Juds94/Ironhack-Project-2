@@ -3,6 +3,7 @@ const Dog = require("../models/Dog.model")
 const User = require('./../models/User.model')
 const {isLoggedIn, CheckRole, checkRole} = require('./../middleware/route-guard')
 const {isOwner, isCare, isAdmin, isSameUser} = require('./../utils/index')
+const { response } = require("express")
 
 router.get('/profile', isLoggedIn, (req, res, next) =>{
    
@@ -21,7 +22,13 @@ router.get('/profile/:id/edit', isLoggedIn, (req, res, next)=>{
     }))
     .catch(err => console.log(err))
 })
-
+//care list
+router.get('/care',isLoggedIn,checkRole('OWNER','ADMIN'),(req,res,next)=>{
+    User
+    .find({role:'CARE'})
+    .then(cares=> res.render('care-list',{cares}))
+    .catch(err=>console.log(err))
+})
 
 // router.post('/profile/:id/edit', isLoggedIn, (req, res, next)=>{
 //    const{id}=req.params
@@ -29,7 +36,6 @@ router.get('/profile/:id/edit', isLoggedIn, (req, res, next)=>{
 //    User.findById(id)
 //        .then(user => res.render('user/edit-profile',{user}))
 // }
-
 
 //Eliminar
 
@@ -44,5 +50,4 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'),(req,res,next)
 
 
 
-PRUEBAAAAAAAAAAAAAAAAAAAA
 module.exports = router
