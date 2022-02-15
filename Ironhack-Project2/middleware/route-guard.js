@@ -11,6 +11,17 @@ const checkRole = (...admittedRoles) => (req, res, next) => {
         errorMessage: `Desautorizado, solo rol ${admittedRoles}`
     })
 }
+
+const checkSameUser= (req, res, next) => {
+    console.log(req.session.currentUser._id, req.params.id)
+    
+    if (req.session.currentUser._id != req.params.id) {
+        res.redirect('/login')
+        return
+    }
+    next()
+
+}
 module.exports = {
-    isLoggedIn, checkRole
+    isLoggedIn, checkRole, checkSameUser
 }
