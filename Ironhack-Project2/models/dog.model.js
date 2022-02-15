@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
@@ -10,20 +11,25 @@ const dogSchema = new Schema(
             required: true,
         },
 
-        Age: {
+        age: {
             type: Number,
             required: true
         },
 
-        Size: {
+        size: {
             type: String,
-            required: true,
+            enum: ['BIG', 'MEDIUM', 'SMALL']
         },
 
         description: {
             type: String,
             required: true,
-        }
+        },
+        
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
 
 
 

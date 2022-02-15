@@ -17,6 +17,7 @@ const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
+require("./config/session.config")(app)
 
 // default value for title local
 
@@ -27,6 +28,10 @@ app.locals.appTitle = `4Legs`
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);
+const authRoutes = require("./routes/auth.routes")
+app.use("/", authRoutes)
+const userRoutes = require("./routes/user.routes")
+app.use("/",userRoutes)
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

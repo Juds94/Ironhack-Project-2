@@ -1,48 +1,53 @@
+
+const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
-const careSchema = new Schema(
+const userSchema = new Schema(
     {
         email: {
             type: String,
             unique: true,
             required: true,
         },
+
         username: {
             type: String,
             unique: true,
             required: true,
         },
-        password: String,
 
-       
-        experience: {
+        password: {
+            type: String,
+            required: true,
+        },
+
+        description: {
             type: String,
             required: true,
         },
 
         role: {
             type: String,
-            enum: ['CARE']
+            enum: ['CARE', 'ADMIN', 'OWNER']
         },
 
         phone: {
-            type: Number,
-            require: true,
-        },
-
-        typeDog:{
             type: String,
             required: true,
-        }        
+        },
+
+        dogSize: {
+            type: String,
+            enum: ['BIG', 'MEDIUM', 'SMALL']
+        },
 
     },
     {
-
         timestamps: true,
     }
 );
 
-const Care= model("Care", careSchema);
+const User = model("User", userSchema);
 
-module.exports = Care;
+module.exports = User;
