@@ -1,12 +1,22 @@
 const router = require("express").Router()
 const Dog = require("../models/Dog.model")
 const User = require('./../models/User.model')
-const {isLoggedIn, CheckRole, checkRole} = require('./../middleware/route-guard')
-const {isOwner, isCare, isAdmin, isSameUser} = require('./../utils/index')
+const { isLoggedIn, checkRole, checkSameUser } = require('./../middleware/route-guard')
+const { isOwner, isCare, isAdmin, isSameUser } = require('./../utils/index')
+const apiHandler = require('./../api-handlers/dog-search-handler')
+const dogSearch = new apiHandler()
 const { response } = require("express")
 
 
 
+
+router.get('/profile', isLoggedIn, (req, res, next) => {
+
+    Dog
+        .find({ owner: req.session.currentUser._id })
+        .then(dogs => res.render('user/profile', { dogs, isOwner: isOwner(req.session.currentUser), user: req.session.currentUser }))
+        .catch(err => console.log(err))
+})
 
 
 router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
@@ -21,13 +31,7 @@ router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
         }))
         .catch(err => console.log(err))
 })
-//care list
-router.get('/care',isLoggedIn,checkRole('OWNER','ADMIN'),(req,res,next)=>{
-    User
-    .find({role:'CARE'})
-    .then(cares=> res.render('care-list',{cares}))
-    .catch(err=>console.log(err))
-})
+
 
 router.post('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
 
@@ -35,8 +39,11 @@ router.post('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => 
     const { username, email, phone, description } = req.body
 
     User
-        .findByIdAndUpdate(id, { username, email, phone, description })
-        .then(() => res.redirect('/profile'))
+        .findByIdAndUpdate(id, { username, email, phone, description }, { new: true })
+        .then((user) => {
+            req.session.currentUser = user
+            res.redirect('/profile')
+        })
         .catch(err => console.log(err))
 })
 
@@ -66,6 +73,14 @@ router.post('/profile/:id/edit/dog/:dog_id', isLoggedIn, checkSameUser, checkRol
 })
 
 
+//care list
+router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
+    User
+        .find({ role: 'CARE' })
+        .then(cares => res.render('care-list', { cares }))
+        .catch(err => console.log(err))
+})
+
 //Eliminar
 
 router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
@@ -77,6 +92,19 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, ne
         .catch(err => console.log(err))
 })
 
+
+router.get('/search', (req, res) => {
+
+    dogSearch
+
+        .getOneDog(req.query.breed)
+        .then(response => {
+            console.log('Informacion sobre la raza:', response.data)
+            res.render('user/search-dog', { breeds: response.data }, )
+        })
+        .catch(err => console.log(err))
+
+})
 
 
 module.exports = router
