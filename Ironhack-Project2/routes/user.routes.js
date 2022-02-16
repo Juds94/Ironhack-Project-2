@@ -1,12 +1,24 @@
 const router = require("express").Router()
 const Dog = require("../models/Dog.model")
 const User = require('./../models/User.model')
-const {isLoggedIn, CheckRole, checkRole} = require('./../middleware/route-guard')
+const {isLoggedIn, checkRole, checkSameUser} = require('./../middleware/route-guard')
 const {isOwner, isCare, isAdmin, isSameUser} = require('./../utils/index')
 const { response } = require("express")
 
 
+//Perfil
 
+
+router.get('/profile', isLoggedIn, (req, res, next) => {
+
+    Dog
+        .find({ owner: req.session.currentUser._id })
+        .then(dogs => res.render('user/profile', { dogs, isOwner: isOwner(req.session.currentUser), user: req.session.currentUser }))
+        .catch(err => console.log(err))
+
+})
+
+// Editar perfil Ususario
 
 
 router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
@@ -21,13 +33,7 @@ router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
         }))
         .catch(err => console.log(err))
 })
-//care list
-router.get('/care',isLoggedIn,checkRole('OWNER','ADMIN'),(req,res,next)=>{
-    User
-    .find({role:'CARE'})
-    .then(cares=> res.render('care-list',{cares}))
-    .catch(err=>console.log(err))
-})
+
 
 router.post('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
 
@@ -77,6 +83,31 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, ne
         .catch(err => console.log(err))
 })
 
+//care list
+router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
+    User
+        .find({ role: 'CARE' })
+        .then(cares => res.render('care-list', { cares }))
+        .catch(err => console.log(err))
+})
 
+
+// AQUÍ EL ENDPOINT DE VER LOS DETALLES DEL CARE
+
+router.get('/profile/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
+
+    User
+  
+})
+
+
+// nos falta el endpoint para ver cada uno de los perfiles de un care
+// ese endpoint va a renderizar una vista con la info del care
+// con las reseñas de ese care
+// y con un formulario para dejar una review
+// ese form va a llevar al endpoint de crear una reseña
+// en ese endpoint de crear una reseña (que va en review.routes)
+// crearemos una reseña con la info que nos viene del form etc. 
+// y luego redirigimos a la misma página en la que deberá aparecer ya la reseña nueva
 
 module.exports = router

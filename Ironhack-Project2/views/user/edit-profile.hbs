@@ -1,28 +1,32 @@
-<h1> Edita aquí tu perfil!</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1> Edita aquí tu perfil!</h1>
 
-<form action="/profile/{{user._id}}/edit" method="POST" style="display: inline-block;">
+        <form action="/profile/{{user._id}}/edit" method="POST" style="display: inline-block;">
 
-    <label>
-        Username
-        <input type="text" name="username" value="{{user.username}}">
-    </label>
+            <label>
+                Username
+                <input type="text" name="username" value="{{user.username}}">
+            </label>
 
-    <label>
-        Email
-        <input type="text" name="email" value="{{user.email}}">
-    </label>
+            <label>
+                Email
+                <input type="text" name="email" value="{{user.email}}">
+            </label>
 
-    <label>
-        Phone
-        <input type="text" name="phone" value={{user.phone}}>
-    </label>
+            <label>
+                Phone
+                <input type="text" name="phone" value={{user.phone}}>
+            </label>
 
-    <label>
-        Description
-        <input type="text" name="description" value={{user.description}}>
-    </label>
+            <label>
+                Description
+                <input type="text" name="description" value={{user.description}}>
+            </label>
 
-    <input type="submit" value="Editar mi perfil">
+            <input type="submit" value="Editar mi perfil">
 
 
-</form>
+        </form>
+    </div>
+</div>

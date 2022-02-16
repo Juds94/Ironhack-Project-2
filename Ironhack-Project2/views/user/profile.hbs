@@ -1,17 +1,26 @@
-<h1> Bienvenido a tu perfil {{user.username}}</h1>
+<div class="container">
+    <div class="row justify-content-center">
+
+        <h1> Bienvenido a tu perfil {{user.username}}</h1>
 
 
-<a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
+        <li>Nombre de Usuario:{{user.username}}</li>
+        <li>Tipo de perro:{{user.dogSize}}</li>
+        <li>Telefono:{{user.phone}}</li>
+        <li>Descripción:{{user.description}}</li>
 
-{{#if isOwner}}
-<h2>Aqui está la información de tu perrete</h2>
-
-{{#each dogs}}
-<li>Nombre:{{name}}</li>
-<li>Años:{{age}}</li>
-<li>Descripción:{{description}}</li>
-<a href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos de tu perrete!</a>
-{{/each}}
+        <a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
 
 
-{{/if}}
+
+        {{#if isOwner}}
+        <h2>Aqui está la información de tu perrete</h2>
+        {{#each dogs}}
+        <li>Nombre:{{name}}</li>
+        <li>Años:{{age}}</li>
+        <li>Descripción:{{description}}</li>
+        <a href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos de tu perrete!</a>
+        {{/each}}
+        {{/if}}
+    </div>
+</div>
