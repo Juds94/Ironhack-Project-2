@@ -1,21 +1,19 @@
-<form action="/search" method="GET" style="display:inline-block;">
+<form action="/dog/search" method="GET" style="display:inline-block;">
 
-<input type="text" name="breed">
-<input type="submit" value="Busca información sobre una raza">
+    <input type="text" name="breed">
+    <input type="submit" value="Busca información sobre una raza">
 
 </form>
 
 
 
-{{#each breeds}}
+{{#if name}}
 <h1> Informacion sobre {{name}}</h1>
 
 <h1>{{name}}</h1>
-<img src="{{reference_image_id}}"></img>
 <h2>Peso: {{weight.imperial}}</h2>
 <h2>Altura: {{height.imperial}}</h2>
 <h2>Personalidad: {{temperament}}</h2>
 <h2>Esperanza de vida: {{life_span}}</h2>
 
-{{/each}}
-
+{{/if}}

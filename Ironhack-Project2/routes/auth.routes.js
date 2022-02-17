@@ -29,8 +29,11 @@ router.post('/register/:role', fileUploader.single('profilePic'), (req, res, nex
     const { role } = req.params
     const { username, password, description, email, phone } = req.body
 
-    if (!username || !password || !description || !email || !phone)
+    // console.log('REQ BODY ==>', req.body)
+
+    if (!username || !password || !description || !email || !phone) {
         res.redirect(`/register/${role}`)
+    }
 
     bcrypt
         .genSalt(saltRounds)
@@ -92,7 +95,7 @@ router.post('/login', (req, res, next) => {
 
 //log Out
 
-router.post('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/login'))
 })
 

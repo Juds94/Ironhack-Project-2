@@ -12,7 +12,7 @@ const reviewSchema = new Schema(
         receiver: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true
+           
         },
         text: {
             type: String,
@@ -22,6 +22,7 @@ const reviewSchema = new Schema(
         rating: {
             type: Number,
             required: true,
+            maxValue: 10
         },
 
 

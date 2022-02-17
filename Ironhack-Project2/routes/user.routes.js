@@ -91,7 +91,15 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, ne
         .catch(err => console.log(err))
 })
 
-//care list
+
+//Buscar perros
+
+
+
+
+// Lista de Cares
+
+
 router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
     User
         .find({ role: 'CARE' })
@@ -99,27 +107,23 @@ router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) =>
         .catch(err => console.log(err))
 })
 
-router.get('/search', (req, res) => {
-
-    dogSearch
-
-        .getOneDog(req.query.breed)
-        .then(response => {
-            console.log('Informacion sobre la raza:', response.data)
-            res.render('user/search-dog', { breeds: response.data }, )
-        })
-        .catch(err => console.log(err))
-
-})
-
-
 // AQUÍ EL ENDPOINT DE VER LOS DETALLES DEL CARE
 
-router.get('/profile/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
+router.get('/profile/contact/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
+
+    const {id} = req.params
 
     
   
+    User
+        .findById(id)
+        .then(user => res.render('user/care-details', user))
+        .catch(err => console.log(err))
 })
+
+
+
+
 
 
 // nos falta el endpoint para ver cada uno de los perfiles de un care

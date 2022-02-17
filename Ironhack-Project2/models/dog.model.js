@@ -4,7 +4,6 @@ const { Schema, model } = require("mongoose");
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const dogSchema = new Schema(
     {
-
         name: {
             type: String,
             required: true,
@@ -31,13 +30,9 @@ const dogSchema = new Schema(
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
-        },
-
-
-
-    },
-
-);
+        }
+    }
+)
 
 const Dog = model("Dog", dogSchema);
 
