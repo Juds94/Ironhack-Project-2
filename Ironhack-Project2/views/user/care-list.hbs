@@ -10,14 +10,6 @@
                     <h3> {{username}}</h3>
                 </li>
                 <br>
-                <li> Nombre:
-                    {{emali}}
-                </li>
-                <br>
-                <li> Telefono:
-                    {{phone}}
-                </li>
-                <br>
                 <li> Tipo de perro:
                     {{dogSize}}
                 </li>
@@ -28,8 +20,9 @@
                 <br>
                 <br>
             </ul>
-            <a class="btn" href="/profile/{{_id}}">Ver Perfli</a>
-
+            <a class="btn" href="/profile/contact/{{id}}">Ver Información de Contacto</a>
+            <a class="btn" href="review/create/{{id}}"> Escribe una reseña a este cuidador</a>
+            <a class="btn" href="review/{{id}}"> Mira las reseñas de otros dueños sobre este cuidador!</a>
             {{/each}}
         </div>
     </div>

@@ -11,7 +11,7 @@
 
         <a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
 
-{{/if}}
+
 
 
         {{#if isOwner}}
@@ -22,6 +22,8 @@
         <li>Descripción:{{description}}</li>
         <a href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos de tu perrete!</a>
         {{/each}}
+
+        <a href="/care"> Busca un cuidador para tu mascota</a>
         {{/if}}
     </div>
 </div>

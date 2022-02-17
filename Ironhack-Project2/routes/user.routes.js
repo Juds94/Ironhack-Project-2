@@ -5,7 +5,6 @@ const { isLoggedIn, checkRole, checkSameUser } = require('./../middleware/route-
 const { isOwner, isCare, isAdmin, isSameUser } = require('./../utils/index')
 const apiHandler = require('./../api-handlers/dog-search-handler')
 const dogSearch = new apiHandler()
-const { response } = require("express")
 
 
 //Perfil
@@ -20,7 +19,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 
 })
 
-// Editar perfil Ususari
+// Editar perfil Ususario
 
 
 router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
@@ -77,13 +76,7 @@ router.post('/profile/:id/edit/dog/:dog_id', isLoggedIn, checkSameUser, checkRol
 })
 
 
-//care list
-router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
-    User
-        .find({ role: 'CARE' })
-        .then(cares => res.render('care-list', { cares }))
-        .catch(err => console.log(err))
-})
+
 
 //Eliminar
 
@@ -96,35 +89,37 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, ne
         .catch(err => console.log(err))
 })
 
-//care list
+
+//Buscar perros
+
+
+
+
+// Lista de Cares
+
+
 router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
     User
         .find({ role: 'CARE' })
-        .then(cares => res.render('care-list', { cares }))
+        .then(cares => res.render('user/care-list', { cares }))
         .catch(err => console.log(err))
 })
-
-router.get('/search', (req, res) => {
-
-    dogSearch
-
-        .getOneDog(req.query.breed)
-        .then(response => {
-            console.log('Informacion sobre la raza:', response.data)
-            res.render('user/search-dog', { breeds: response.data }, )
-        })
-        .catch(err => console.log(err))
-
-})
-
 
 // AQUÍ EL ENDPOINT DE VER LOS DETALLES DEL CARE
 
-router.get('/profile/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
+router.get('/profile/contact/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
+
+    const {id} = req.params
 
     User
-  
+        .findById(id)
+        .then(user => res.render('user/care-details', user))
+        .catch(err => console.log(err))
 })
+
+
+
+
 
 
 // nos falta el endpoint para ver cada uno de los perfiles de un care

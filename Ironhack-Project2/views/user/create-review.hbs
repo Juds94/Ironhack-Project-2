@@ -1,0 +1,47 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <h1> Escribe una reseña a este cuidador</h1>
+            <hr>
+
+            <form action="/review/create/{{careId}}" method="POST">
+
+                <div class="mb-3 row">
+                    {{!-- <div class="col">
+                        <label for="ownerInpunt" class="form-label">Tu username:</label>
+                        <input type="owner" class="form-control" id="ownerInput" name="owner">
+                        <div class="form-text">Requerido.</div>
+                    </div> --}}
+
+                    <div class="col">
+                        <label for="rateInput" class="form-label">Puntuación</label>
+                        <input type="number" class="form-control" id="rateInput" name="rating">
+                        <div class="form-text">Requerido.</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="descriptionInput" class="form-label">Escribe tu reseña:</label>
+                    <textarea class="form-control" id="descriptionInput" rows="3" name="text"></textarea>
+                    <div class="form-text">Requerido.</div>
+                </div>
+
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Enviar reseña</button>
+
+                </div>
+
+            </form>
+
+            {{#if errorMessage}}
+            <div id="errorMessage">
+                <p>{{errorMessage}}</p>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+</div>

@@ -29,8 +29,9 @@ router.post('/register/:role', (req, res, next) => {
 
     // console.log('REQ BODY ==>', req.body)
 
-    if (!username || !password || !description || !email || !phone)
+    if (!username || !password || !description || !email || !phone) {
         res.redirect(`/register/${role}`)
+    }
 
     bcrypt
         .genSalt(saltRounds)
@@ -39,8 +40,9 @@ router.post('/register/:role', (req, res, next) => {
         .then(createdUser => {
             req.session.currentUser = createdUser
             if (createdUser.role === 'OWNER') {
-                res.redirect('/dog/create')}
-             else if (createdUser.role==='CARE'){
+                res.redirect('/dog/create')
+            }
+            else if (createdUser.role === 'CARE') {
                 res.redirect('/profile')
             }
 
@@ -48,18 +50,18 @@ router.post('/register/:role', (req, res, next) => {
         .catch(error => next(error))
 })
 
-router.get('/dog/create', (req, res, next)=>{
+router.get('/dog/create', (req, res, next) => {
     res.render('user/create-dog')
 })
-router.post('/dog/create',(req,res,next)=>{
+router.post('/dog/create', (req, res, next) => {
 
     const id = req.session.currentUser._id
-    const{name,age,size,description} = req.body
+    const { name, age, size, description } = req.body
 
     Dog
-        .create({ name, age, size, description, owner: id})
-        .then(()=>res.redirect('/profile'))
-        .catch(err=> console.log(err))
+        .create({ name, age, size, description, owner: id })
+        .then(() => res.redirect('/profile'))
+        .catch(err => console.log(err))
 })
 //Log In
 
@@ -87,7 +89,7 @@ router.post('/login', (req, res, next) => {
 
 //log Out
 
-router.post('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/login'))
 })
 

@@ -12,9 +12,7 @@ const checkRole = (...admittedRoles) => (req, res, next) => {
     })
 }
 
-const checkSameUser= (req, res, next) => {
-    console.log(req.session.currentUser._id, req.params.id)
-    
+const checkSameUser = (req, res, next) => {
     if (req.session.currentUser._id != req.params.id) {
         res.redirect('/login')
         return

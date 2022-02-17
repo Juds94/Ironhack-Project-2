@@ -38,6 +38,8 @@ const userRoutes = require("./routes/user.routes")
 app.use("/", userRoutes);
 const reviewRoutes = require("./routes/review.routes")
 app.use("/review", reviewRoutes);
+const dogsRoutes = require("./routes/dogs.routes")
+app.use("/dog", dogsRoutes)
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
