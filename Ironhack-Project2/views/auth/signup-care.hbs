@@ -7,7 +7,7 @@
             <h1>Registrate como cuidador</h1>
             <hr>
 
-            <form action="/register/care" method="POST">
+            <form action="/register/care" method="POST" enctype="multipart/form-data">
 
                 <div class="mb-3 row">
                     <div class="col">
@@ -48,6 +48,12 @@
                         <option value="SMALL"> Razas pequeñas</option>
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label for="descriptionInput" class="form-label">Foto de perfil</label>
+                    <input type="file" name="profilePic" class="form-control-file">
+                   
+                </div>
+
 
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-dark block">Completar registro</button>

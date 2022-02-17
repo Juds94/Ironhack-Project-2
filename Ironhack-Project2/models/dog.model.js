@@ -24,6 +24,9 @@ const dogSchema = new Schema(
             type: String,
             required: true,
         },
+        dogPic:{
+            type:String,
+        },
         
         owner: {
             type: mongoose.Schema.Types.ObjectId,

@@ -3,7 +3,7 @@
 
         <h1> Bienvenido a tu perfil {{user.username}}</h1>
 
-
+        <img src="{{user.profilePic}}" class="img-fluid"></img>
         <li>Nombre de Usuario:{{user.username}}</li>
         <li>Tipo de perro:{{user.dogSize}}</li>
         <li>Telefono:{{user.phone}}</li>
@@ -11,16 +11,18 @@
 
         <a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
 
-{{/if}}
-
-
         {{#if isOwner}}
         <h2>Aqui está la información de tu perrete</h2>
         {{#each dogs}}
+        <div class="card" style="width:18rem">
+        <img src="{{dogPic}}" class="card-img-top" alt="imagen-perro"></img>
+        <div class="card-body">
         <li>Nombre:{{name}}</li>
         <li>Años:{{age}}</li>
         <li>Descripción:{{description}}</li>
         <a href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos de tu perrete!</a>
+        </div>
+        </div>
         {{/each}}
         {{/if}}
     </div>

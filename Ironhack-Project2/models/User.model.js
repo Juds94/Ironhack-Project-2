@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
-
+const fileUploader = require('../config/cloudinary.config');
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
     {
@@ -26,7 +26,9 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-
+       profilePic:{           
+           type:String,
+       },
         role: {
             type: String,
             enum: ['CARE', 'ADMIN', 'OWNER']
