@@ -1,16 +1,20 @@
 const axios = require('axios')
 
-class apiHandler{
+class apiHandler {
 
-    constructor(){
+    constructor() {
         this.axiosApp = axios.create({
-            baseURL:'https://api.thedogapi.com/v1/breeds'
+            baseURL: 'https://api.thedogapi.com/v1/breeds'
         })
     }
 
-    getOneDog(breed){
+    getOneDog(breed) {
         console.log(breed)
         return this.axiosApp.get(`/search?q=${breed}`)
+    }
+
+    getAllDogs() {
+        return this.axiosApp.get('/')
     }
 }
 

@@ -4,7 +4,7 @@ const Review = require('./../models/Review.model')
 const { isLoggedIn, checkRole, checkSameUser } = require('./../middleware/route-guard')
 const { isOwner, isCare, isAdmin, isSameUser } = require('./../utils/index')
 const { response } = require("express")
-const Review = require("../models/Review.model")
+
 
 
 
@@ -29,7 +29,7 @@ router.post('/create/:careId', isLoggedIn, checkRole('OWNER'), (req, res, next) 
 
     console.log(owner, careId, text, rating)
 
-    if(rating > 10){
+    if (rating > 10) {
         res.render('user/create-review', { errorMessage: 'Por favor, la puntuación máxima debe ser 10' })
     }
 
@@ -48,6 +48,7 @@ router.get('/:careId', isLoggedIn, (req, res, next) => {
 
     Review
         .find({ receiver: careId })
+        .populate('owner')
         .then(reviews => res.render('user/care-reviews', { reviews }))
         .catch(err => console.log(err))
 

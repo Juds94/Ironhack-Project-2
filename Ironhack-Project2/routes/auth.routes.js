@@ -5,7 +5,6 @@ const Dog = require("../models/Dog.model")
 const User = require('./../models/User.model')
 const saltRounds = 10
 
-//  SignUp Care
 
 
 router.get('/register', (req, res, next) => res.render('auth/select-profile'))
@@ -24,12 +23,11 @@ router.get('/register/:role', (req, res, next) => {
 
 router.post('/register/:role', fileUploader.single('profilePic'), (req, res, next) => {
 
-    console.log('PILLA--->', req.file)
 
     const { role } = req.params
     const { username, password, description, email, phone } = req.body
 
-    // console.log('REQ BODY ==>', req.body)
+
 
     if (!username || !password || !description || !email || !phone) {
         res.redirect(`/register/${role}`)
@@ -58,18 +56,18 @@ router.post('/register/:role', fileUploader.single('profilePic'), (req, res, nex
 router.get('/dog/create', (req, res, next) => {
     res.render('user/create-dog')
 })
+
 router.post('/dog/create', fileUploader.single('dogPic'), (req, res, next) => {
-    console.log('PILLA--->', req.file)
-    
+
     const id = req.session.currentUser._id
     const { name, age, size, description } = req.body
 
     Dog
-        .create({ name, age, size, dogPic: req.file.path, description, owner: id })
+        .create({ name, age, size, dogPic: req.file?.path, description, owner: id })
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
-//Log In
+
 
 router.get('/login', (req, res, next) => res.render('auth/login'))
 router.post('/login', (req, res, next) => {
@@ -90,13 +88,14 @@ router.post('/login', (req, res, next) => {
                 res.redirect('/profile')
             }
         })
-        .catch(error => next(error))
+        .catch(err => next(err))
 })
 
-//log Out
+
 
 router.get('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/login'))
+        
 })
 
 

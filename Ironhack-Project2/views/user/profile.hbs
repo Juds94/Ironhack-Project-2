@@ -12,8 +12,6 @@
         <a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
 
 
-
-
         {{#if isOwner}}
         <h2>Aqui está la información de tu perrete</h2>
         {{#each dogs}}
@@ -29,6 +27,9 @@
         {{/each}}
 
         <a href="/care"> Busca un cuidador para tu mascota</a>
+        <div class="d-grid gap-2">
+             <a href="/dog/create"> Registra otro perrete</a>
+        </div>
         {{/if}}
     </div>
 </div>

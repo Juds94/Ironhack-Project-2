@@ -23,12 +23,12 @@ const reviewSchema = new Schema(
             type: Number,
             required: true,
             maxValue: 10
-        },
+        }
 
 
-    },
+    }
 
-);
+)
 
 const Review = model("Review", reviewSchema);
 module.exports = Review;
