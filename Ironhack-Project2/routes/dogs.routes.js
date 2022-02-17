@@ -7,7 +7,7 @@ const apiHandler = require('./../api-handlers/dog-search-handler')
 const dogSearch = new apiHandler()
 
 router.get('/search', (req, res) => {
-
+    req.app.locals.bgColor = 'violet'
     dogSearch
 
         .getOneDog(req.query.breed)

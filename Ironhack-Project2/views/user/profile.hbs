@@ -1,34 +1,55 @@
 <div class="container">
-    <div class="row justify-content-center">
 
-        <h1> Bienvenido a tu perfil {{user.username}}</h1>
+    <div class="row">
 
-        <img src="{{user.profilePic}}" class="img-fluid"></img>
-        <li>Nombre de Usuario:{{user.username}}</li>
-        <li>Tipo de perro:{{user.dogSize}}</li>
-        <li>Telefono:{{user.phone}}</li>
-        <li>Descripción:{{user.description}}</li>
-
-        <a href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
-
-
-
-
-        {{#if isOwner}}
-        <h2>Aqui está la información de tu perrete</h2>
-        {{#each dogs}}
-        <div class="card" style="width:18rem">
-        <img src="{{dogPic}}" class="card-img-top" alt="imagen-perro"></img>
-        <div class="card-body">
-        <li>Nombre:{{name}}</li>
-        <li>Años:{{age}}</li>
-        <li>Descripción:{{description}}</li>
-        <a href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos de tu perrete!</a>
+        <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="700px">
+            <img src="{{user.profilePic}}" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded" width="500px" height="500px"></img>
+            <br>
+            <br>
+            <h2> Bienvenido a tu perfil {{user.username}}</h2>
+            
+                <p>Nombre de Usuario:{{user.username}}</p>
+                <br>
+                <p>Tipo de perro:{{user.dogSize}}</p>
+                <br>
+                <p>Telefono:{{user.phone}}</p>
+                <br>
+                <p>Descripción:{{user.description}}</p>
+            
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
         </div>
-        </div>
-        {{/each}}
+        <div class="col-lg-4">
 
-        <a href="/care"> Busca un cuidador para tu mascota</a>
-        {{/if}}
+            <br>
+
+        </div>
+        <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="700px">
+            {{#if isOwner}}
+            {{#each dogs}}
+            <img src="{{dogPic}}" alt="imagen-perro" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded" width="500px" height="500px"></img>
+            <br>
+            <br>
+            {{/each}}
+            {{/if}}
+            {{#if isOwner}}
+            {{#each dogs}}
+            <h2> Bienvenido a tu perfil {{name}}</h2>
+
+            <p>Nombre:{{name}}</p>
+            <br>
+            <p>Años:{{age}}</p>
+            <br>
+            <p>Descripción:{{description}}</p>
+            <br>
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos
+                de tu perrete!</a>
+            <br>
+            {{/each}}
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/care"> Busca un cuidador para tu mascota</a>
+            {{/if}}
+
+        </div>
+
     </div>
+</div>
 </div>

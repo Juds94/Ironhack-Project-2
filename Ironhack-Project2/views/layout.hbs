@@ -14,38 +14,42 @@
 
 </head>
 
-<body>
-
-   <nav class="navbar bg-dark">
+<body class={{bgColor}}>
+   <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
          <a class="navbar-brand" href="/">
-            <4Leg>s
+            <img src="./../images/4legs-logo-w.png" width="230px" height="125px" alt="logo4legs">
          </a>
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
-         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/register">Registrate</a>
+                  <a class="nav-link active" aria-current="page" aria-current="page" href="/register">Registrate</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/login">Inicia Sesión</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/care">Cuidadores</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/dog/search">Información Sobre Razas</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/logout">Cerrar Sesión</a>
-               </li>
+            <li class="nav-item">
+               <a class="nav-link" style="--bs-text-opacity: .5" href="/login">Inicia Sesión</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link active" href="/profile">Mi Perfil</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link active" href="/care">Cuidadores</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link active" href="/dog/search">Información Sobre Razas</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/logout">Cerrar Sesión</a>
+            </li>
             </ul>
          </div>
       </div>
+
    </nav>
+   
    <canvas id="my-chart"></canvas>
 
 
@@ -58,5 +62,8 @@
       crossorigin="anonymous"></script>
    <script src="/js/script.js"></script>
 </body>
-
+<footer>
+   <br>
+   <br>
+</footer>
 </html>

@@ -1,12 +1,85 @@
+img{
+  width: 100%;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-decoration-color: aliceblue;
+  text-decoration-style: bold;
 }
 
-a {
-  color: #00b7ff;
+.brown {
+  background-color: rgb(230, 167, 142);
+}
+
+.blue {
+  background-color: rgb(71, 138, 201);
+}
+.green {
+  background-color: rgb(208, 209, 115);
+}
+.violet{
+  background-color: rgb(171, 115, 209);
+}
+.nav-link {
+  color: aliceblue;
+}
+.form-label{
+  color:aliceblue
+}
+a.hover {
+  color: aliceblue
+}
+.navbar{
+  padding-top: 15px;
+  padding-left: 14px;
+  border-bottom: 4px solid white;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-top: 2rem; ;
+  padding-right: 4.5rem;
+  padding-left: 3.5rem;
+}
+
+
+.under{
+  color: aliceblue;
+  font-weight: bold;
 }
 
 h1 {
-  color: 15px;
+  color: aliceblue;
+  font-size: 60px;
+  text-align: center;
+}
+h2 {
+  color: aliceblue;
+  font-size:50px;
+  text-align: center;
+  padding: 1rem;
+}
+.text-primary {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) ;
+}
+.bg-light {
+  --bs-bg-opacity: 0.1;
+  background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
+}
+.btn{
+ color:aliceblue;
+ background-color: transparent;
+  border-color:aliceblue;
+  padding: 20px;
+  margin: 10px;
+}
+.col-lg-4{
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.care-list{
+  margin: 50px;
+  padding: 20px;
+  border: 0.5px aliceblue;
+  border-radius: 3%;
+  background-color: rgb(80, 144, 204);
 }

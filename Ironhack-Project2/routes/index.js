@@ -5,6 +5,7 @@ const dogsFacts = new ApiHandler()
 /* GET home page */
 router.get("/", (req, res, next) => {
  
+  req.app.locals.bgColor = 'brown'
 
   dogsFacts
     .getFact()

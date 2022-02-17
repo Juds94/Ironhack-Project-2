@@ -1,37 +1,30 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1>Encuentra tu Cuidador Ideal</h1>
-            {{#each cares}}
-
-            <ul>
+        <h1>Encuentra tu Cuidador Ideal</h1>
+        {{#each cares}}
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <div class="care-list shadow-lg p-3 mb-5 bg-light rounded" >
                 <br>
-                <li>
-                    <img src="{{profilePic}}" alt="profile-picture">
-                </li>
-                <br>
-                <li>
-                    <h3> {{username}}</h3>
-                </li>
-                <br>
-                <li> Tipo de perro:
-                    {{dogSize}}
-                </li>
-                <br>
-                <li> Experiencia:
-                    {{description}}
-                </li>
-                <br>
-                <br>
-            </ul>
-            <a class="btn" href="/profile/{{_id}}">write review</a>
-        
-
-
-            <a class="btn" href="/profile/contact/{{id}}">Ver Información de Contacto</a>
-            <a class="btn" href="review/create/{{id}}"> Escribe una reseña a este cuidador</a>
-            <a class="btn" href="review/{{id}}"> Mira las reseñas de otros dueños sobre este cuidador!</a>
-            {{/each}}
+                <img src="{{profilePic}}" class="rounded-circle" width="290" height="370" alt="profile-picture">
+                <div >
+                    <br>
+                    <h5 class="card-title"> {{username}}</h5>
+                    <br>
+                    <p> Experiencia:
+                        {{description}}
+                    </p>
+                    <br>
+                    <br>
+                    <a  href="/profile/contact/{{id}}" class="btn btn-light" style="--bs-text-opacity: .5">Ver Información de Contacto</a>
+                    <br>
+                    <a  href="review/create/{{id}}" class="btn btn-light" style="--bs-text-opacity: .5"> Escribe una reseña a este cuidador</a>
+                    <br>
+                    <a href="review/{{id}}" class="btn btn-light" style="--bs-text-opacity: .5"> Mira las reseñas de otros dueños sobre este
+                        cuidador!</a>
+                    <br>
+                </div>
+            </div>
         </div>
+        {{/each}}
     </div>
 </div>
