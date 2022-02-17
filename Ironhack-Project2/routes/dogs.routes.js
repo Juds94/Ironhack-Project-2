@@ -10,12 +10,31 @@ router.get('/search', (req, res) => {
     req.app.locals.bgColor = 'violet'
     dogSearch
 
-        .getOneDog(req.query.breed)
-        .then(response => {
-            const dog = response.data[0]
-            res.render('user/search-dog', dog)
-        })
-        .catch(err => console.log(err))
+    if (!req.query.breed) {
+        res.render('user/search-dog')
+    } else {
+
+        const dogPromise = dogSearch.getOneDog(req.query.breed)
+        const allDogsPromise = dogSearch.getAllDogs()
+
+        Promise.all([dogPromise, allDogsPromise])
+            .then(data => {
+                const dog = data[0].data[0]
+                const allDogs = data[1].data
+
+                const desiredDogFromArray = allDogs.filter(elm => {
+                    return elm.reference_image_id === dog.reference_image_id
+                })
+
+                const desiredDog = desiredDogFromArray[0]
+
+                res.render('user/search-dog', desiredDog)
+                
+            })
+            .catch(err => next(err))
+
+    }
+
 
 })
 

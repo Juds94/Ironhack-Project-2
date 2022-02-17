@@ -3,20 +3,22 @@
     <div class="row">
 
         <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="700px">
-            <img src="{{user.profilePic}}" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded" width="500px" height="500px"></img>
+            <img src="{{user.profilePic}}" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded" width="500px"
+                height="500px"></img>
             <br>
             <br>
             <h2> Bienvenido a tu perfil {{user.username}}</h2>
-            
-                <p>Nombre de Usuario:{{user.username}}</p>
-                <br>
-                <p>Tipo de perro:{{user.dogSize}}</p>
-                <br>
-                <p>Telefono:{{user.phone}}</p>
-                <br>
-                <p>Descripción:{{user.description}}</p>
-            
-            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/profile/{{user._id}}/edit"> Edita tu perfil</a>
+
+            <p>Nombre de Usuario:{{user.username}}</p>
+            <br>
+            <p>Tipo de perro:{{user.dogSize}}</p>
+            <br>
+            <p>Telefono:{{user.phone}}</p>
+            <br>
+            <p>Descripción:{{user.description}}</p>
+
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/profile/{{user._id}}/edit">
+                Edita tu perfil</a>
         </div>
         <div class="col-lg-4">
 
@@ -26,7 +28,8 @@
         <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="700px">
             {{#if isOwner}}
             {{#each dogs}}
-            <img src="{{dogPic}}" alt="imagen-perro" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded" width="500px" height="500px"></img>
+            <img src="{{dogPic}}" alt="imagen-perro" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded"
+                width="500px" height="500px"></img>
             <br>
             <br>
             {{/each}}
@@ -41,15 +44,16 @@
             <br>
             <p>Descripción:{{description}}</p>
             <br>
-            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button"
+                href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos
                 de tu perrete!</a>
             <br>
+            <a href="/dog/create"> Registra otro perrete</a>
             {{/each}}
-            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/care"> Busca un cuidador para tu mascota</a>
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/care"> Busca un cuidador para tu
+                mascota</a>
             {{/if}}
 
         </div>
-
     </div>
-</div>
 </div>

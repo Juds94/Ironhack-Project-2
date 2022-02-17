@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
 const fileUploader = require('../config/cloudinary.config');
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
+
 const userSchema = new Schema(
     {
         email: {
@@ -48,7 +48,7 @@ const userSchema = new Schema(
     {
         timestamps: true,
     }
-);
+)
 
 const User = model("User", userSchema);
 

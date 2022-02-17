@@ -10,10 +10,14 @@
 {{#if name}}
 <h1> Informacion sobre {{name}}</h1>
 
-<h1>{{name}}</h1>
-<h2>Peso: {{weight.imperial}}</h2>
-<h2>Altura: {{height.imperial}}</h2>
-<h2>Personalidad: {{temperament}}</h2>
-<h2>Esperanza de vida: {{life_span}}</h2>
+<p>{{name}}</p>
+<p>weight: {{weight.imperial}}</p>
+<p>Height: {{height.imperial}}</p>
+<p>Temperament: {{temperament}}</p>
+<p>Life Span: {{life_span}}</p>
+<p>Breed Group:{{breed_group}}</p>
+<p>Bred for: {{bred_for}}</p>
+<img src="{{image.url}}" alt={{name}} picture>
+
 
 {{/if}}

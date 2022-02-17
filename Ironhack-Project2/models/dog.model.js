@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
+const { syncIndexes } = require('./User.model');
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const dogSchema = new Schema(
     {
         name: {
@@ -23,10 +23,10 @@ const dogSchema = new Schema(
             type: String,
             required: true,
         },
-        dogPic:{
-            type:String,
+        dogPic: {
+            type: String,
         },
-        
+
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
@@ -35,5 +35,7 @@ const dogSchema = new Schema(
 )
 
 const Dog = model("Dog", dogSchema);
+
+Dog.syncIndexes()
 
 module.exports = Dog;

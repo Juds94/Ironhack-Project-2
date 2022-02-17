@@ -9,7 +9,6 @@ const { response } = require("express")
 const fileUploader = require('../config/cloudinary.config');
 
 
-//Perfil
 
 
 router.get('/profile', isLoggedIn, (req, res, next) => {
@@ -17,11 +16,10 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
     Dog
         .find({ owner: req.session.currentUser._id })
         .then(dogs => res.render('user/profile', { dogs, isOwner: isOwner(req.session.currentUser), user: req.session.currentUser }))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
-// Editar perfil Ususario
 
 
 router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
@@ -34,7 +32,7 @@ router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
             user,
 
         }))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
@@ -49,12 +47,11 @@ router.post('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => 
             req.session.currentUser = user
             res.redirect('/profile')
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
 
-// Editar Perro
 
 router.get('/profile/:id/edit/dog/:dog_id', isLoggedIn, checkSameUser, checkRole('OWNER'), (req, res, next) => {
 
@@ -63,7 +60,7 @@ router.get('/profile/:id/edit/dog/:dog_id', isLoggedIn, checkSameUser, checkRole
     Dog
         .findById(dog_id)
         .then(dog => res.render('user/edit-dog', { user: req.session.currentUser, dog }))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 router.post('/profile/:id/edit/dog/:dog_id', isLoggedIn, checkSameUser, checkRole('OWNER'), (req, res, next) => {
@@ -74,13 +71,10 @@ router.post('/profile/:id/edit/dog/:dog_id', isLoggedIn, checkSameUser, checkRol
     Dog
         .findByIdAndUpdate(dog_id, { name, age, description })
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
-
-
-//Eliminar
 
 router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
     const { id } = req.params
@@ -88,16 +82,9 @@ router.post('/profile/:id/delete', isLoggedIn, checkRole('ADMIN'), (req, res, ne
     User
         .findByIdAndDelete(id)
         .then(() => res.redirect('/register'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
-
-//Buscar perros
-
-
-
-
-// Lista de Cares
 
 
 router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
@@ -105,35 +92,21 @@ router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) =>
     User
         .find({ role: 'CARE' })
         .then(cares => res.render('user/care-list', { cares }))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
-// AQUÍ EL ENDPOINT DE VER LOS DETALLES DEL CARE
 
 router.get('/profile/contact/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
 
-    const {id} = req.params
+    const { id } = req.params
 
-    
-  
+
     User
         .findById(id)
         .then(user => res.render('user/care-details', user))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
-
-
-
-
-// nos falta el endpoint para ver cada uno de los perfiles de un care
-// ese endpoint va a renderizar una vista con la info del care
-// con las reseñas de ese care
-// y con un formulario para dejar una review
-// ese form va a llevar al endpoint de crear una reseña
-// en ese endpoint de crear una reseña (que va en review.routes)
-// crearemos una reseña con la info que nos viene del form etc. 
-// y luego redirigimos a la misma página en la que deberá aparecer ya la reseña nueva
 
 module.exports = router
