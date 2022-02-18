@@ -42,14 +42,19 @@
 
                 <div class="mb-3">
                     <label for="descriptionInput" class="form-label">Foto de perfil</label>
-                   <input type="file" name="profilePic" class="form-control-file" >
-                    
+                    <input type="file" name="profilePic" class="form-control-file">
+
                 </div>
 
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-dark block">Continuar</button>
                 </div>
 
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
             </form>
         </div>
     </div>
