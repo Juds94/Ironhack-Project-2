@@ -17,9 +17,9 @@ router.get('/register/:role', (req, res, next) => {
     const { role } = req.params
 
     if (role === 'owner') {
-        res.render('auth/signup-owner', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
+        res.render('auth/signup-owner')
     } else if (role === 'care') {
-        res.render('auth/signup-care', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
+        res.render('auth/signup-care')
     }
 
 })
@@ -34,7 +34,11 @@ router.post('/register/:role', fileUploader.single('profilePic'), (req, res, nex
 
 
     if (!username || !password || !description || !email || !phone) {
-        res.redirect(`/register/${role}`)
+        if (role === 'owner') {
+            res.render('auth/signup-owner', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
+        } else if (role === 'care') {
+            res.render('auth/signup-care', { errorMessage: 'Por favor, rellena todos los campos requeridos' })
+        }
     }
 
     bcrypt
@@ -103,7 +107,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/login'))
-        
+
 })
 
 

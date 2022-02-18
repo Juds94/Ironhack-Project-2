@@ -8,7 +8,7 @@ const isLoggedIn = (req, res, next) => {
 
 const checkRole = (...admittedRoles) => (req, res, next) => {
     admittedRoles.includes(req.session.currentUser.role) ? next() : res.render('auth/login', {
-        errorMessage: `Desautorizado, solo rol ${admittedRoles}`
+        errorMessage: `Solo puedes ver la lista de cuidadores si estás registrado con un perfil de dueño`
     })
 }
 

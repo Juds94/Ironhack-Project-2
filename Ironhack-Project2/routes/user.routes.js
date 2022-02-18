@@ -39,10 +39,10 @@ router.get('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
 router.post('/profile/:id/edit', isLoggedIn, checkSameUser, (req, res, next) => {
 
     const { id } = req.params
-    const { username, email, phone, description } = req.body
+    const { username, phone, description } = req.body
 
     User
-        .findByIdAndUpdate(id, { username, email, phone, description }, { new: true })
+        .findByIdAndUpdate(id, { username, phone, description }, { new: true })
         .then((user) => {
             req.session.currentUser = user
             res.redirect('/profile')
