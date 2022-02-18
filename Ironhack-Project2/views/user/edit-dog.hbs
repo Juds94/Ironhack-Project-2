@@ -5,17 +5,17 @@
         <form action="/profile/{{user._id}}/edit/dog/{{dog._id}}" method="POST" style="display: inline-block;">
 
             <label for="nameInput" class="form-label">Name</label>
-            <input type="text" class="form-control" id="nameInput" name="name">
+            <input type="text" class="form-control" id="nameInput" name="name" value="{{dog.name}}">
             <br>
             <hr>
             <br>
             <label for="ageInput" class="form-label">Age</label>
-            <input type="number" class="form-control" id="ageInput" name="age">
+            <input type="number" class="form-control" id="ageInput" name="age" value="{{dog.age}}">
             <br>
             <hr>
             <br>
             <label for="descriptionInput" class="form-label">Description</label>
-            <textarea type="text" class="form-control" id="descriptionInput" name="description"></textarea>
+            <textarea type="text" class="form-control" id="descriptionInput" name="description" value="{{dog.description}}"></textarea>
             <br>
             <hr>
             <br>

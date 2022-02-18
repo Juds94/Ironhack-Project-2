@@ -6,17 +6,17 @@
                 <form action="/profile/{{user._id}}/edit" method="POST">
                     <br>
                     <label for="usernameInput" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="usernamelInput" name="username">
+                    <input type="text" class="form-control" id="usernamelInput" name="username" value="{{user.username}}">
                     <br>
                     <hr>
                     <br>
                     <label for="phoneInput" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="phonelInput" name="phone">
+                    <input type="text" class="form-control" id="phonelInput" name="phone" value="{{user.phone}}">
                     <br>
                     <hr>
                     <br>
                     <label for="descriptionInput" class="form-label">Description</label>
-                    <textarea type="text" class="form-control" id="descriptionlInput" name="description"></textarea>
+                    <textarea type="text" class="form-control" id="descriptionlInput" name="description" value="{{user.description}}"></textarea>
                     <br>
                     <hr>
                     <br>
