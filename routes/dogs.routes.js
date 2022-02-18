@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const Dog = require("../models/Dog.model")
+const Dog = require("../models/dog.model")
 const User = require('./../models/User.model')
 const { isLoggedIn, checkRole, checkSameUser } = require('./../middleware/route-guard')
 const { isOwner, isCare, isAdmin, isSameUser } = require('./../utils/index')

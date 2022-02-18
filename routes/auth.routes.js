@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcrypt')
 const fileUploader = require('../config/cloudinary.config');
-const Dog = require("../models/Dog.model")
+const Dog = require("../models/dog.model")
 const User = require('./../models/User.model')
 const saltRounds = 10
 
