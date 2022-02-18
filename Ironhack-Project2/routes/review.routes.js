@@ -7,13 +7,6 @@ const { response } = require("express")
 
 
 
-
-
-
-// AQUÍ EL ENDPOINT DE CREAR UNA RESEÑA
-// en todos los enlaces que pongáis en als vistas o en redirects
-// o olvideis poner /review/wahteverrr
-
 router.get('/create/:careId', isLoggedIn, checkRole('OWNER'), (req, res, next) => {
 
     const { careId } = req.params
@@ -54,28 +47,5 @@ router.get('/:careId', isLoggedIn, (req, res, next) => {
 
 })
 
-// Editar Reviews
-
-// router.get('/edit/:id', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
-
-//     const {id} = req.params
-
-//     Review
-//     .findById(id)
-//     .then(review =>)
-// })
-
-
-
-
-
-
-//delete solo el Admin
-
-// router.post('/profile/:id', isLoggedIn,checkRole('ADMIN'),(req,res,next)=>{
-// //necesitamso la info del perfil del Care para localizar el ID y poder accodeer a sus valores
-
-
-// })
 
 module.exports = router
