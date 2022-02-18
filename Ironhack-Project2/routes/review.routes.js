@@ -24,8 +24,9 @@ router.post('/create/:careId', isLoggedIn, checkRole('OWNER'), (req, res, next) 
 
     if (rating > 10) {
         res.render('user/create-review', { errorMessage: 'Por favor, la puntuación máxima debe ser 10' })
+        req.app.locals.bgColor = 'violet'
     }
-
+   
     Review
         .create({ owner, text, rating, receiver: careId })
         .then(() => res.redirect('/care'))// mirar ¿como podemos postear en el perfil del CARE?

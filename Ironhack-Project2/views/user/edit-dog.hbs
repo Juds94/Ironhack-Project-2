@@ -4,24 +4,18 @@
 
         <form action="/profile/{{user._id}}/edit/dog/{{dog._id}}" method="POST" style="display: inline-block;">
 
-            <label>
-                Name
-                <input type="text" name="name">
-            </label>
+            <label for="nameInput" class="form-label">Name</label>
+            <input type="text" class="form-control" id="nameInput" name="name">
             <br>
             <hr>
             <br>
-            <label>
-                Age
-                <input type="number" name="age">
-            </label>
+            <label for="ageInput" class="form-label">Age</label>
+            <input type="number" class="form-control" id="ageInput" name="age">
             <br>
             <hr>
             <br>
-            <label>
-                Description
-                <textarea type="text" name="description"></textarea>
-            </label>
+            <label for="descriptionInput" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="descriptionInput" name="description"></textarea>
             <br>
             <hr>
             <br>

@@ -1,34 +1,28 @@
 <div class="container">
     <div class="row justify-content-center">
-
-        <h1> Edita aquí tu perfil!</h1>
-        <div class="col-12">
-            <form action="/profile/{{user._id}}/edit" method="POST">
-                <br>
-                <label>
-                    Username
-                    <input type="text" name="username">
-                </label>
-                <br>
-                <hr>
-                <br>
-                <label>
-                    Phone
-                    <input type="text" name="phone">
-                </label>
-                <br>
-                <hr>
-                <br>
-                <label>
-                    Description
-                    <textarea type="text"> </textarea>
-                </label>
-                <br>
-                <hr>
-                <br>
-                <input class="btn btn-light" style="--bs-text-opacity: .5" role="button" type="submit"
-                    value="Editar mi perfil">
-            </form>
+        <div class="col-md-6">
+            <h1> Edita aquí tu perfil!</h1>
+            <div class="col-md-6">
+                <form action="/profile/{{user._id}}/edit" method="POST">
+                    <br>
+                    <label for="usernameInput" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="usernamelInput" name="username">
+                    <br>
+                    <hr>
+                    <br>
+                    <label for="phoneInput" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phonelInput" name="phone">
+                    <br>
+                    <hr>
+                    <br>
+                    <label for="descriptionInput" class="form-label">Description</label>
+                    <textarea type="text" class="form-control" id="descriptionlInput" name="description"></textarea>
+                    <br>
+                    <hr>
+                    <br>
+                    <input class="btn btn-light" style="--bs-text-opacity: .5" role="button" type="submit"
+                        value="Editar mi perfil">
+                </form>
+            </div>
         </div>
     </div>
-</div>
