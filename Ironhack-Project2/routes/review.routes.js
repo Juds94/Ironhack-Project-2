@@ -7,13 +7,6 @@ const { response } = require("express")
 
 
 
-
-
-
-// AQUÍ EL ENDPOINT DE CREAR UNA RESEÑA
-// en todos los enlaces que pongáis en als vistas o en redirects
-// o olvideis poner /review/wahteverrr
-
 router.get('/create/:careId', isLoggedIn, checkRole('OWNER'), (req, res, next) => {
     req.app.locals.bgColor = 'brown'
     const { careId } = req.params
