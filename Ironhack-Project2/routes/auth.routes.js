@@ -12,6 +12,7 @@ router.get('/register', (req, res, next) => {
 })
 
 router.get('/register/:role', (req, res, next) => {
+    req.app.locals.bgColor = 'brown'
 
     const { role } = req.params
 

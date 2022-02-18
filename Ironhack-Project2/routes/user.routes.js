@@ -12,7 +12,7 @@ const fileUploader = require('../config/cloudinary.config');
 
 
 router.get('/profile', isLoggedIn, (req, res, next) => {
-    req.app.locals.bgColor = 'green'
+    req.app.locals.bgColor = 'violet'
     Dog
         .find({ owner: req.session.currentUser._id })
         .then(dogs => res.render('user/profile', { dogs, isOwner: isOwner(req.session.currentUser), user: req.session.currentUser }))
@@ -97,7 +97,7 @@ router.get('/care', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) =>
 
 
 router.get('/profile/contact/:id', isLoggedIn, checkRole("OWNER"), (req, res, next) => {
-
+    req.app.locals.bgColor = 'brown'
     const { id } = req.params
 
 

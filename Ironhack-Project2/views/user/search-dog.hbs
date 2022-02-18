@@ -1,23 +1,47 @@
-<form action="/dog/search" method="GET" style="display:inline-block;">
+<div class="container">
+    <div class="row justify-content-center">
 
-    <input type="text" name="breed">
-    <input type="submit" value="Busca información sobre una raza">
+        <form class="searchForm" action="/dog/search" method="GET">
 
-</form>
+            <input class="btn-light" height="20px" style="--bs-text-opacity: .5" type="text" name="breed">
+            <input class="btn btn-light" style="--bs-text-opacity: .5" type="submit"
+                value="Busca información sobre una raza">
 
+        </form>
+        {{#if name}}
+        <h1> Informacion sobre {{name}}</h1>
+        <br>
+        <div class="col-6">
+           
+            <img src="{{image.url}}" alt={{name}} picture>
+            <br>
+        </div>
+        <div class="col-6">
+            <div class="card" width="200px">
+                <br>
+                <p>{{name}}</p>
+                <hr>
+                <br>
+                <p>weight: {{weight.imperial}}</p>
+                <hr>
+                <br>
+                <p>Height: {{height.imperial}}</p>
+                <hr>
+                <br>
+                <p>Temperament: {{temperament}}</p>
+                <hr>
+                <br>
+                <p>Life Span: {{life_span}}</p>
+                <hr>
+                <br>
+                <p>Breed Group:{{breed_group}}</p>
+                <hr>
+                <br>
+                <p>Bred for: {{bred_for}}</p>
+                <br>
+            </div>
+        </div>
 
-
-{{#if name}}
-<h1> Informacion sobre {{name}}</h1>
-
-<p>{{name}}</p>
-<p>weight: {{weight.imperial}}</p>
-<p>Height: {{height.imperial}}</p>
-<p>Temperament: {{temperament}}</p>
-<p>Life Span: {{life_span}}</p>
-<p>Breed Group:{{breed_group}}</p>
-<p>Bred for: {{bred_for}}</p>
-<img src="{{image.url}}" alt={{name}} picture>
-
-
-{{/if}}
+        {{/if}}
+    </div>
+</div>

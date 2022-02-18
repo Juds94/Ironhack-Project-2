@@ -29,16 +29,18 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="phoneInput" class="form-label">Teléfono movil</label>
+                    <input class="form-control" id="phoneInput" rows="3" name="phone"></input>
+                    <div class="form-text">Requerido.</div>
+                </div>
+
+                <div class="mb-3">
                     <label for="descriptionInput" class="form-label">Descripción</label>
                     <textarea class="form-control" id="descriptionInput" rows="3" name="description"></textarea>
                     <div class="form-text">Requerido.</div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="phoneInput" class="form-label">Teléfono movil</label>
-                    <textarea class="form-control" id="phoneInput" rows="3" name="phone"></textarea>
-                    <div class="form-text">Requerido.</div>
-                </div>
+
 
                 <div class="mb-3">
                     <label> Selecciona que tipo de razas quieres cuidar:</label>
@@ -50,15 +52,16 @@
                 </div>
                 <div class="mb-3">
                     <label for="descriptionInput" class="form-label">Foto de perfil</label>
-                    <input type="file" name="profilePic" class="form-control-file">
-                   
+                    <input type="file" name="profilePic" class="form-control-file" style="--bs-text-opacity: .5">
+
                 </div>
 
 
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark block">Completar registro</button>
+                    <button type="submit" class="btn btn-light" style="--bs-text-opacity: .5" role="button">Completar
+                        registro</button>
                 </div>
-                
+
                 {{#if errorMessage}}
                 <div id="errorMessage">
                     <p>{{errorMessage}}</p>

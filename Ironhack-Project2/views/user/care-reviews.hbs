@@ -1,9 +1,20 @@
-<h1> Reviews de otros dueños:</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1> Reviews de otros dueños:</h1>
 
-{{#each reviews}}
-<p>Reseña publicada por: {{owner.username}}</p>
-<p>Descripción:{{text}}</p>
-<p>Rating:{{rating}}</p>
+        {{#each reviews}}
+        <spam class="border-botton">
+        <p class="pR">Reseña publicada por: {{owner.username}}</p>
+        <hr>
+        <br>
+        <p>Descripción:{{text}}</p>
+        <hr>
+        <br>
+        <p>Rating:{{rating}}</p>
+        <br>
+        <br>
+        </spam>
+        {{/each}}
 
-
-{{/each}}
+    </div>
+</div>

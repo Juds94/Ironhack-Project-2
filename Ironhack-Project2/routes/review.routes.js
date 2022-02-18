@@ -15,7 +15,7 @@ const { response } = require("express")
 // o olvideis poner /review/wahteverrr
 
 router.get('/create/:careId', isLoggedIn, checkRole('OWNER'), (req, res, next) => {
-
+    req.app.locals.bgColor = 'brown'
     const { careId } = req.params
 
     res.render('user/create-review', { careId })
@@ -54,28 +54,5 @@ router.get('/:careId', isLoggedIn, (req, res, next) => {
 
 })
 
-// Editar Reviews
-
-// router.get('/edit/:id', isLoggedIn, checkRole('OWNER', 'ADMIN'), (req, res, next) => {
-
-//     const {id} = req.params
-
-//     Review
-//     .findById(id)
-//     .then(review =>)
-// })
-
-
-
-
-
-
-//delete solo el Admin
-
-// router.post('/profile/:id', isLoggedIn,checkRole('ADMIN'),(req,res,next)=>{
-// //necesitamso la info del perfil del Care para localizar el ID y poder accodeer a sus valores
-
-
-// })
 
 module.exports = router

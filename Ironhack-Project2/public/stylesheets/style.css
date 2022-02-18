@@ -8,17 +8,17 @@ body {
 }
 
 .brown {
-  background-color: rgb(230, 167, 142);
+  background-color:#A87985;
 }
 
 .blue {
-  background-color: rgb(71, 138, 201);
+  background-color: #D2B67D;
 }
 .green {
-  background-color: rgb(208, 209, 115);
+  background-color: #789996;
 }
 .violet{
-  background-color: rgb(171, 115, 209);
+  background-color: #B6A7A0;
 }
 .nav-link {
   color: aliceblue;
@@ -36,11 +36,15 @@ a.hover {
 }
 .navbar-expand-lg .navbar-nav .nav-link {
   padding-top: 2rem; ;
-  padding-right: 4.5rem;
+ 
   padding-left: 3.5rem;
 }
 
-
+.searchForm{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
 .under{
   color: aliceblue;
   font-weight: bold;
@@ -50,6 +54,7 @@ h1 {
   color: aliceblue;
   font-size: 60px;
   text-align: center;
+  padding-bottom: 30px;
 }
 h2 {
   color: aliceblue;
@@ -82,4 +87,37 @@ h2 {
   border: 0.5px aliceblue;
   border-radius: 3%;
   background-color: rgb(80, 144, 204);
+}
+.card{
+  display: flex;
+  justify-content: left;
+  padding-left:10px;
+border: 10px;
+border-color: solid azure;
+}
+label{
+  color: azure;
+}
+.col-lg-4 {
+  width: 33.3%;
+}
+.pR{
+  color:azure
+}
+.selectB{
+  display: flex;
+  justify-content: center;
+}
+.selectB .btn {
+  width: 30%;
+
+  padding: 30px;
+  font-weight: 200;
+  font-size: 1.9rem;
+}
+.selectB text{
+  font-size: 80%;
+}
+.acceso .btn{
+   font-size: 1.9rem;
 }

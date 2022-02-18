@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="700px">
+        <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="900px">
             <img src="{{user.profilePic}}" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded" width="500px"
                 height="500px"></img>
             <br>
@@ -11,8 +11,6 @@
 
             <p>Nombre de Usuario:{{user.username}}</p>
             <br>
-            <p>Tipo de perro:{{user.dogSize}}</p>
-            <br>
             <p>Telefono:{{user.phone}}</p>
             <br>
             <p>Descripción:{{user.description}}</p>
@@ -20,14 +18,15 @@
             <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/profile/{{user._id}}/edit">
                 Edita tu perfil</a>
         </div>
-        <div class="col-lg-4">
+        <div class="col-4">
 
             <br>
 
         </div>
-        <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="700px">
-            {{#if isOwner}}
-            {{#each dogs}}
+        {{#if isOwner}}
+        {{#each dogs}}
+        <div class="col-lg-4 shadow-lg p-3 mb-5 bg-light" width="900px">
+
             <img src="{{dogPic}}" alt="imagen-perro" class="rounded-circle shadow-lg p-3 mb-5 bg-light rounded"
                 width="500px" height="500px"></img>
             <br>
@@ -48,12 +47,14 @@
                 href="/profile/{{../user._id}}/edit/dog/{{_id}}"> Edita los datos
                 de tu perrete!</a>
             <br>
-            <a href="/dog/create"> Registra otro perrete</a>
+            <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/dog/create"> Registra otro
+                perrete</a>
             {{/each}}
             <a class="btn btn-light" style="--bs-text-opacity: .5" role="button" href="/care"> Busca un cuidador para tu
                 mascota</a>
-            {{/if}}
-
         </div>
+        {{/if}}
+
     </div>
+</div>
 </div>
